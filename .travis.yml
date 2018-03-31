@@ -10,7 +10,7 @@ env:
   global:
     - CC_TEST_REPORTER_ID=46bb6b11d80c20422286479540f404817a3832340f733d35c1b57d45c4aea449
     - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
-  - SURGE_LOGIN=nils.abegg@gmail.com SURGE_TOKEN=bef99a7c55eb0d3883fadbc9c8e1aa98
+    - SURGE_LOGIN=nils.abegg@gmail.com SURGE_TOKEN=bef99a7c55eb0d3883fadbc9c8e1aa98
 
 install:
   - composer install
@@ -23,7 +23,7 @@ before_script:
 script:
   - mkdir -p build/logs
   - ./vendor/bin/phpcs --standard=phpcs.xml ./
-  - "phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml"
+  - ./vendor/bin/phpunit --testsuite=unit --coverage-text --coverage-clover build/logs/clover.xml
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
   - mkdir -p build/apidoc/doc/sesame
   - php vendor/sami/sami/sami.php update sami_config.php
