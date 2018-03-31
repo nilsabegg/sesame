@@ -1,6 +1,4 @@
 engines:
-  structure:
-    enabled: true
   duplication:
     enabled: true
     config:
