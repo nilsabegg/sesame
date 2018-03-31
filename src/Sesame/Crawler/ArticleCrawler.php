@@ -17,4 +17,16 @@ class ArticleCrawler extends Crawler
     {
         parent::__construct();
     }
+
+    /**
+     * crawlArticle
+     *
+     *
+     *
+     * @return bool
+     */
+    public function crawlArticle()
+    {
+        return true;
+    }
 }

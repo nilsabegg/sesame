@@ -21,10 +21,15 @@ class Sesame
     {
     }
 
+    /**
+     * crawlArticle
+     *
+     * @return bool
+     */
     public function crawlArticle()
     {
         $crawler = new ArticleCrawler();
 
-        return true;
+        return $crawler->crawlArticle();
     }
 }
