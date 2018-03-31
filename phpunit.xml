@@ -22,6 +22,8 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
             <exclude>
+                <directory>build</directory>
+                <directory>cache</directory>
                 <directory>vendor</directory>
                 <file>./sami_config.php</file>
             </exclude>

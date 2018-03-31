@@ -1,4 +1,5 @@
 <?php
+
 namespace Sesame;
 
 use Sesame\Crawler\ArticleCrawler;

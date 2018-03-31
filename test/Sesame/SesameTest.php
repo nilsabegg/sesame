@@ -1,4 +1,5 @@
 <?php
+
 namespace Sesame\Test;
 
 use PHPUnit\Framework\TestCase;
@@ -12,6 +13,7 @@ use Sesame\Sesame;
  */
 class SesameTest extends TestCase
 {
+
     public function testCrawlArticle()
     {
         $sesame = new Sesame();

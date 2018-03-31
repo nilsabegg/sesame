@@ -1,4 +1,5 @@
 <?php
+
 namespace Sesame\Crawler;
 
 /**
@@ -14,6 +15,5 @@ class Crawler
      */
     public function __construct()
     {
-
     }
 }
