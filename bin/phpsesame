@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+// application.php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Symfony\Component\Console\Application;
+use Sesame\Command\CrawlArticleCommand;
+use Sesame\Sesame;
+
+$application = new Application();
+
+$sesame = new Sesame();
+$crawlArticleCommand = new CrawlArticleCommand();
+$crawlArticleCommand->setSesame($sesame);
+$application->add($crawlArticleCommand);
+
+$application->run();

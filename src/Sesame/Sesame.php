@@ -3,6 +3,7 @@
 namespace Sesame;
 
 use Sesame\Crawler\ArticleCrawler;
+use Sesame\Model\Article;
 
 /**
  * Class Sesame
@@ -24,12 +25,14 @@ class Sesame
     /**
      * crawlArticle
      *
-     * @return bool
+     * @param string $responseBody
+     * @param bool $crawlVariations
+     * @return Article
      */
-    public function crawlArticle()
+    public function crawlArticle(string $responseBody, bool $crawlVariations)
     {
         $crawler = new ArticleCrawler();
 
-        return $crawler->crawlArticle();
+        return $crawler->crawlArticle($responseBody, $crawlVariations);
     }
 }

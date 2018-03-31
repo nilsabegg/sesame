@@ -2,6 +2,9 @@
 
 namespace Sesame\Crawler;
 
+use Sesame\Model\Article;
+use \Symfony\Component\DomCrawler\Crawler as DomCrawler;
+
 /**
  * Class ArticleCrawler
  *
@@ -21,12 +24,15 @@ class ArticleCrawler extends Crawler
     /**
      * crawlArticle
      *
-     *
-     *
-     * @return bool
+     * @param string $responseBody
+     * @param bool $crawlVariations
+     * @return Article
      */
-    public function crawlArticle()
+    public function crawlArticle(string $responseBody, bool $crawlVariations): Article
     {
-        return true;
+        $articleCrawler = new DomCrawler($responseBody);
+        $article = new Article();
+
+        return $article;
     }
 }
