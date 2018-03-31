@@ -6,6 +6,7 @@ require __DIR__.'/../vendor/autoload.php';
 
 use Symfony\Component\Console\Application;
 use Sesame\Command\CrawlArticleCommand;
+use Sesame\Test\Helper\EncryptPageCommand;
 use Sesame\Sesame;
 
 $application = new Application();
@@ -13,6 +14,9 @@ $application = new Application();
 $sesame = new Sesame();
 $crawlArticleCommand = new CrawlArticleCommand();
 $crawlArticleCommand->setSesame($sesame);
+
+$encryptPageCommand = new EncryptPageCommand();
+$application->add($encryptPageCommand);
 $application->add($crawlArticleCommand);
 
 $application->run();

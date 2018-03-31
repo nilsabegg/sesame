@@ -29,7 +29,7 @@ class Sesame
      * @param bool $crawlVariations
      * @return Article
      */
-    public function crawlArticle(string $responseBody, bool $crawlVariations)
+    public function crawlArticle(string $responseBody, bool $crawlVariations): Article
     {
         $crawler = new ArticleCrawler();
 

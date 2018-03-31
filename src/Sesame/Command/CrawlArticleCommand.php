@@ -73,17 +73,26 @@ class CrawlArticleCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        // get command line input
         $articleUrl = $input->getArgument('articleUrl');
         $crawlVariations = $input->getOption('crawlVariations');
+
+        // convert to boolean
         if ($crawlVariations === 1) {
             $crawlVariations = true;
         } elseif ($crawlVariations === 0) {
             $crawlVariations = false;
         }
+
+        // get article page
         $client = new Client();
         $response = $client->request('GET', $articleUrl);
         $responseBody = $response->getBody();
-        $this->sesame->crawlArticle((string) $responseBody, $crawlVariations);
-        print_r((string)$responseBody);
+
+        // get article data
+        $article = $this->sesame->crawlArticle((string) $responseBody, $crawlVariations);
+        $article->setUrl($articleUrl);
+
+        print_r($article);
     }
 }

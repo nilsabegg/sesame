@@ -33,6 +33,12 @@ class ArticleCrawler extends Crawler
         $articleCrawler = new DomCrawler($responseBody);
         $article = new Article();
 
+        // extract ammount of total orders
+        $ordersHtml = $articleCrawler->filter('#j-order-num');
+        $ordersString = $ordersHtml->text();
+        $ordersStringParts = explode(' ', $ordersString);
+        $article->setOrders($ordersStringParts[0]);
+
         return $article;
     }
 }
