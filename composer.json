@@ -1,0 +1,19 @@
+{
+  "name": "nilsabegg/sesame",
+  "type": "settings",
+  "description": "A PHP library to automate Dropshipping with aliexpress.com as far as possible.",
+  "keywords": ["PHP", "AliExpress", "Dropshipping"],
+  "authors": [
+    {
+      "name": "Nils Abegg",
+      "email": "nils.abegg@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.0",
+    "symfony/css-selector": "^4.0",
+    "symfony/dom-crawler": "^4.0"
+  },
+  "require-dev": {
+  }
+}
