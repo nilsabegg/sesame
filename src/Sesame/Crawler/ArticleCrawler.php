@@ -33,12 +33,42 @@ class ArticleCrawler extends Crawler
         $articleCrawler = new DomCrawler($responseBody);
         $article = new Article();
 
+        // extract name of the article
+        $nameHtml = $articleCrawler->filter('h1.product-name');
+        $article->setName($nameHtml->text());
+
         // extract ammount of total orders
+        $article->setOrders($this->extractOrders($articleCrawler));
+
+        // extract amount of articles in stock
+        $article->setStock($this->extractStock($articleCrawler));
+
+        return $article;
+    }
+
+    /**
+     * @param DomCrawler $articleCrawler
+     * @return int
+     */
+    protected function extractOrders(DomCrawler $articleCrawler): int
+    {
         $ordersHtml = $articleCrawler->filter('#j-order-num');
         $ordersString = $ordersHtml->text();
         $ordersStringParts = explode(' ', $ordersString);
-        $article->setOrders($ordersStringParts[0]);
 
-        return $article;
+        return (int) $ordersStringParts[0];
+    }
+
+    /**
+     * @param DomCrawler $articleCrawler
+     * @return int
+     */
+    protected function extractStock(DomCrawler $articleCrawler): int
+    {
+        $stockAmountHtml = $articleCrawler->filter('#j-sell-stock-num');
+        $stockAmountString = $stockAmountHtml->text();
+        $stockAmountStringParts = explode(' ', $stockAmountString);
+
+        return (int) $stockAmountStringParts[0];
     }
 }

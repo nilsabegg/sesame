@@ -28,6 +28,11 @@ class Article
     protected $priceDiscount;
 
     /**
+     * @var int
+     */
+    protected $stock;
+
+    /**
      * @var string
      */
     protected $url;
@@ -85,6 +90,25 @@ class Article
     public function setPrice(float $price): Article
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
+
+    /**
+     * @param int $stock
+     * @return Article
+     */
+    public function setStock(int $stock): Article
+    {
+        $this->stock = $stock;
 
         return $this;
     }

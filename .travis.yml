@@ -25,7 +25,7 @@ script:
   - php ./vendor/bin/phpcs --standard=phpcs.xml ./
   - php ./vendor/bin/phpunit --coverage-text --coverage-clover build/logs/clover.xml
   - if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
-  - mkdir -p build/apidoc/doc/sesame
+  - mkdir -p build/apidoc
   - php vendor/sami/sami/sami.php update sami_config.php
 
 after_script:
@@ -35,6 +35,6 @@ deploy:
   provider: surge
   skip_cleanup: true
   project: ./build/apidoc
-  domain: nilsabegg.surge.sh
+  domain: sesamephp.surge.sh
   on:
     php: '7.1'
