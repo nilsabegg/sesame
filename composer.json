@@ -1,6 +1,7 @@
 {
   "name": "nilsabegg/sesame",
   "type": "settings",
+  "license": "MIT",
   "description": "A PHP library to automate Dropshipping with aliexpress.com as far as possible.",
   "keywords": [
     "PHP",
@@ -36,5 +37,8 @@
       "Sesame\\Test\\": "./test/Sesame",
       "Sesame\\Test\\Helper\\": "./test/Helper"
     }
-  }
+  },
+  "bin": [
+    "./bin/phpsesame"
+  ]
 }

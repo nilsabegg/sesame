@@ -8,10 +8,16 @@
 [![Latest Stable Version](https://poser.pugx.org/nilsabegg/sesame/v/stable)](https://packagist.org/packages/nilsabegg/sesame)
 [![License](https://poser.pugx.org/nilsabegg/sesame/license)](https://packagist.org/packages/nilsabegg/sesame)
 
-Sesame is PHP library to automate Dropshipping with aliexpress.com as far as possible.
+Sesame is PHP library which aims to automate Dropshipping with aliexpress.com as far as possible.
+But in its current state it is just capable of retrieving informations for an given article.
 
 ## Install
 ```bash
-composer require sesame/sesame
+composer require nilsabegg/sesame
+```
+
+## Usage
+```bash
+bin/phpsesame https://linktoaliexpressarticle.com
 ```
 
