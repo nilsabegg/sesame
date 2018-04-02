@@ -69,30 +69,29 @@ class CrawlArticleCommand extends Command
      * The actual business logic of the command.
      * @param InputInterface $input
      * @param OutputInterface $output
-     * @return int|null|void
+     * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         // get command line input
         $articleUrl = $input->getArgument('articleUrl');
         $crawlVariations = $input->getOption('crawlVariations');
 
-        // convert to boolean
-        if ($crawlVariations === 1) {
-            $crawlVariations = true;
-        } elseif ($crawlVariations === 0) {
-            $crawlVariations = false;
+        try {
+            // get article page
+            $client = new Client();
+            $response = $client->request('GET', $articleUrl);
+            $responseBody = $response->getBody();
+
+            // crawl article page
+            $article = $this->sesame->crawlArticle((string) $responseBody, (bool) $crawlVariations);
+            $article->setUrl($articleUrl);
+        } catch (\Exception $exception) {
+            $output->writeln($exception->getMessage());
+
+            return 1;
         }
 
-        // get article page
-        $client = new Client();
-        $response = $client->request('GET', $articleUrl);
-        $responseBody = $response->getBody();
-
-        // get article data
-        $article = $this->sesame->crawlArticle((string) $responseBody, $crawlVariations);
-        $article->setUrl($articleUrl);
-
-        print_r($article);
+        return 0;
     }
 }
