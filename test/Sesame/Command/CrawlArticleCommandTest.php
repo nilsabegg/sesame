@@ -36,6 +36,6 @@ class CrawlArticleCommandTest extends BaseTest
         ));
 
         $output = $commandTester->getDisplay();
-        $this->assertContains('cURL error 6: Couldn\'t resolve host \'notworking.xml', $output);
+        $this->assertContains('cURL error 6:', substr($output, 0, 13));
     }
 }
